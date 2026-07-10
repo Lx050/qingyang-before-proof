@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="《清样之前》：高小倩与文编的一年，一份关于校稿、协作、传承与边界的真实人物故事。">
+<title>清样之前：高小倩人物故事</title>
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  :root{
+    --desk:#c9c0b1; --paper:#f5f0e4; --paper-clear:#fbf8f0;
+    --ink:#27241e; --soft:#5f594e; --dim:#948b7b; --rule:#d9cfbc;
+    --grid:rgba(71,102,91,.075); --qian:#285f52; --qian-soft:#dce9e4;
+    --lx:#a67435; --proof:#b83d2b; --proof-soft:#f1d9d2;
+    --shadow:rgba(49,40,27,.2);
+    --serif:"Songti SC","STSong","SimSun","Noto Serif CJK SC",serif;
+    --kai:"Kaiti SC","STKaiti","KaiTi",serif;
+    --mono:"Cascadia Mono","SFMono-Regular","Consolas","Liberation Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;background:var(--desk);overflow-x:clip}
+  body{
+    margin:0;color:var(--ink);font-family:var(--serif);font-size:17.5px;line-height:2.08;
+    overflow-x:clip;background:linear-gradient(115deg,rgba(255,255,255,.15),transparent 24% 72%,rgba(68,55,38,.08)),var(--desk);
+  }
+  ::selection{background:var(--proof-soft);color:#4c1c14}
+  a{color:inherit}
+  .skip-link{position:fixed;top:12px;left:12px;z-index:50;padding:8px 14px;color:#fff;background:var(--qian);transform:translateY(-180%);transition:transform .2s ease}
+  .skip-link:focus{transform:none}
+  .proof-book{width:min(980px,calc(100% - 44px));margin:48px auto 90px;filter:drop-shadow(0 26px 48px var(--shadow))}
+  .paper{
+    position:relative;background-color:var(--paper);
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:30px 30px;border:1px solid rgba(81,69,50,.24);
+  }
+  .paper::after{content:"";position:absolute;inset:14px;pointer-events:none;border:1px solid rgba(97,78,52,.09)}
+  .crop{position:absolute;width:34px;height:34px;z-index:4;pointer-events:none}
+  .crop::before,.crop::after{content:"";position:absolute;background:var(--ink);opacity:.48}
+  .crop::before{width:34px;height:1px;top:12px}.crop::after{width:1px;height:34px;left:12px}
+  .crop.tl{top:-24px;left:-24px}.crop.tr{top:-24px;right:-24px;transform:rotate(90deg)}
+  .crop.br{right:-24px;bottom:-24px;transform:rotate(180deg)}.crop.bl{left:-24px;bottom:-24px;transform:rotate(270deg)}
+  .cover{min-height:860px;padding:64px 76px 54px;overflow:hidden}
+  .cover::before{content:"";position:absolute;left:50px;top:0;bottom:0;width:1px;background:rgba(184,61,43,.18)}
+  .cover::after{content:"01";position:absolute;right:28px;bottom:22px;font:12px var(--mono);color:var(--dim);letter-spacing:.18em}
+  .cover > :not(.crop):not(.opening-marks){position:relative;z-index:2}
+  .opening-marks{position:absolute;inset:74px 28px 28px 24px;z-index:1;pointer-events:none;color:var(--proof);font:14px/1.55 var(--kai);opacity:.68}
+  .opening-mark{position:absolute;white-space:nowrap}
+  .opening-mark::after{content:"";position:absolute;height:2px;background:currentColor;transform-origin:left}
+  .mark-cut-a{top:9%;right:20%;transform:rotate(4deg)}
+  .mark-cut-a::after{left:-8px;right:-9px;top:50%;transform:rotate(-7deg)}
+  .mark-cut-b{top:45%;left:1%;transform:rotate(-7deg)}
+  .mark-cut-b::after{left:-6px;right:-8px;top:50%;transform:rotate(5deg)}
+  .mark-order{top:29%;right:1%;padding:4px 8px;border:1px solid currentColor;transform:rotate(5deg)}
+  .mark-order::after{width:44px;right:100%;top:56%;transform:rotate(-18deg)}
+  .mark-move{bottom:25%;left:4%;transform:rotate(-4deg)}
+  .mark-move::after{width:74px;left:102%;top:50%;transform:rotate(9deg)}
+  .mark-query{right:4%;bottom:11%;transform:rotate(2deg)}
+  .folio{display:flex;justify-content:space-between;gap:24px;padding-bottom:14px;border-bottom:1px solid var(--rule);font:11.5px/1.6 var(--mono);color:var(--dim);letter-spacing:.12em;text-transform:uppercase}
+  .folio b{color:var(--qian);font-weight:600}
+  .title-grid{display:grid;grid-template-columns:minmax(0,1fr) 168px;gap:40px;align-items:center;margin-top:88px}
+  h1{margin:0;font-size:clamp(58px,10vw,104px);line-height:1.04;letter-spacing:.08em;font-weight:900}
+  .title-main{display:block}
+  .title-insert{position:relative;display:inline-block;margin:18px 0 0 1.25em;color:var(--proof);font-family:var(--kai);font-size:.6em;font-weight:400;letter-spacing:.22em;transform:rotate(-3deg)}
+  .title-insert::before{content:"⌃";position:absolute;left:-.76em;top:-.72em;font-size:.9em;transform:rotate(-7deg)}
+  .title-insert::after{content:"";position:absolute;left:-.3em;right:.1em;bottom:-.14em;height:2px;background:var(--proof);transform:rotate(1deg) scaleX(0);transform-origin:left;animation:proof-line 1.2s 1s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes proof-line{to{transform:rotate(1deg) scaleX(1)}}
+  .stamp{width:144px;aspect-ratio:1;display:grid;place-items:center;border:4px double var(--proof);border-radius:50%;color:var(--proof);font:900 25px/1.1 var(--serif);letter-spacing:.16em;text-indent:.16em;text-align:center;transform:rotate(9deg);opacity:.82;box-shadow:inset 0 0 0 7px var(--paper),inset 0 0 0 9px var(--proof);animation:stamp-in .5s .75s cubic-bezier(.2,1.4,.3,1) both}
+  @keyframes stamp-in{from{opacity:0;transform:rotate(9deg) scale(1.5)}to{opacity:.82;transform:rotate(9deg) scale(1)}}
+  .deck{max-width:680px;margin:62px 0 0;font-size:21px;line-height:2.05;letter-spacing:.035em}
+  .deck strong{color:var(--qian)}
+  .deck-mark{display:block;margin-top:18px;color:var(--proof);font:17px/1.8 var(--kai);transform:rotate(-1deg)}
+  .facts{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:0;margin-top:72px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .fact{padding:20px 18px 17px;border-right:1px solid var(--rule)}.fact:first-child{padding-left:0}.fact:last-child{border-right:0}
+  .fact b{display:block;font-size:26px;line-height:1.2;color:var(--qian)}.fact span{font:11px var(--mono);color:var(--dim);letter-spacing:.16em}
+  .proof-map{margin-top:48px;padding:24px 26px;background:rgba(251,248,240,.65);border:1px solid var(--rule)}
+  .proof-map-label{margin-bottom:14px;color:var(--proof);font:11px var(--mono);letter-spacing:.28em}
+  .proof-map ol{display:grid;grid-template-columns:1fr 1fr;gap:6px 34px;list-style:none;margin:0;padding:0}
+  .proof-map a{display:grid;grid-template-columns:4.2em auto 1fr;gap:10px;align-items:baseline;padding:4px 0;text-decoration:none;font-size:14px}
+  .proof-map .code{font:10.5px var(--mono);color:var(--qian);letter-spacing:.1em}.proof-map .dots{border-bottom:1px dotted var(--rule);transform:translateY(-4px)}
+  .proof-map a:hover,.proof-map a:focus-visible{color:var(--proof)}
+  .manuscript{margin-top:34px;padding:30px 68px 92px;background-color:var(--paper-clear)}
+  .manuscript::before{content:"";position:absolute;top:0;bottom:15%;left:146px;width:1px;background:linear-gradient(180deg,rgba(184,61,43,.2),rgba(184,61,43,.08) 66%,transparent)}
+  .stage-section{
+    --grid-opacity:.08;--note-opacity:1;--stroke-opacity:.8;--stroke-width:160px;--tape-opacity:.54;
+    position:relative;display:grid;grid-template-columns:112px minmax(0,1fr);gap:36px;padding:94px 0 28px;scroll-margin-top:24px;
+    background-image:linear-gradient(rgba(40,95,82,var(--grid-opacity)) 1px,transparent 1px),linear-gradient(90deg,rgba(40,95,82,var(--grid-opacity)) 1px,transparent 1px);background-size:30px 30px;
+  }
+  .stage-section[data-clean-level="1"]{--grid-opacity:.09;--note-opacity:1;--stroke-opacity:.9;--stroke-width:174px;--tape-opacity:.62}
+  .stage-section[data-clean-level="2"]{--grid-opacity:.073;--note-opacity:.93;--stroke-opacity:.82;--stroke-width:148px;--tape-opacity:.54}
+  .stage-section[data-clean-level="3"]{--grid-opacity:.057;--note-opacity:.86;--stroke-opacity:.74;--stroke-width:128px;--tape-opacity:.46}
+  .stage-section[data-clean-level="4"]{--grid-opacity:.042;--note-opacity:.78;--stroke-opacity:.65;--stroke-width:106px;--tape-opacity:.38}
+  .stage-section[data-clean-level="5"]{--grid-opacity:.027;--note-opacity:.7;--stroke-opacity:.55;--stroke-width:82px;--tape-opacity:.3}
+  .stage-section[data-clean-level="6"]{--grid-opacity:.013;--note-opacity:.62;--stroke-opacity:.42;--stroke-width:54px;--tape-opacity:.2}
+  .stage-section[data-clean-level="7"],.stage-section[data-clean-level="8"]{--grid-opacity:0;--note-opacity:0;--stroke-opacity:0;--tape-opacity:0;grid-template-columns:minmax(0,1fr)}
+  .stage-section[data-clean-level="7"] .section-body,.stage-section[data-clean-level="8"] .section-body{width:min(100%,700px);margin-inline:auto}
+  .stage-section + .stage-section{border-top:1px solid rgba(217,207,188,.62)}
+  .margin-note{position:relative;z-index:2;align-self:start;padding-top:8px;color:var(--proof);font-family:var(--kai);font-size:14.5px;line-height:1.72;transform:rotate(-1.5deg);opacity:var(--note-opacity)}
+  .margin-note::before{content:"";display:block;width:38px;height:2px;margin-bottom:12px;background:var(--proof);transform:rotate(-3deg)}
+  .margin-note b{display:block;margin-bottom:8px;font:10.5px var(--mono);letter-spacing:.16em}
+  .section-body{min-width:0}
+  .section-status{display:flex;align-items:center;gap:10px;margin-bottom:8px;color:var(--qian);font:11px var(--mono);letter-spacing:.2em}
+  .section-status span{padding:3px 9px 2px;border:1px solid currentColor;letter-spacing:.22em}
+  .section-status em{color:var(--dim);font-style:normal;letter-spacing:.12em}
+  .section-status::after{content:"";width:54px;height:1px;background:currentColor;opacity:.45}
+  h2{margin:0 0 28px;font-size:clamp(28px,4.3vw,40px);line-height:1.35;letter-spacing:.055em}
+  .stage-section h2::after{content:"";display:block;width:var(--stroke-width);height:2px;margin-top:14px;background:var(--proof);opacity:var(--stroke-opacity);transform:scaleX(0) rotate(-1deg);transform-origin:left}
+  .stage-section.is-visible h2::after{transform:scaleX(1) rotate(-1deg);transition:transform 1.25s .22s cubic-bezier(.2,.7,.2,1)}
+  .stage-section[data-clean-level="7"] h2::after,.stage-section[data-clean-level="8"] h2::after{display:none}
+  h2 small{display:block;margin-top:7px;color:var(--dim);font:11px var(--mono);letter-spacing:.18em}
+  p{margin:0 0 22px;text-align:justify}.lede{font-size:19px;line-height:2.05;color:#3d3931}
+  .first-char::first-letter{float:left;margin:11px 10px 0 0;color:var(--qian);font-size:3.4em;font-weight:900;line-height:.72}
+  .proof-thought{margin:36px 0;padding:22px 26px 19px;background:rgba(220,233,228,.5);border-left:3px solid var(--qian);font-size:18.5px;line-height:2.05}
+  .evidence{position:relative;margin:34px 0;padding:22px 24px 18px;background:#fffdf7;border:1px solid var(--rule);box-shadow:3px 4px 0 rgba(71,58,39,.055)}
+  .evidence::before{content:"原始校样";position:absolute;top:-11px;left:18px;padding:0 9px;color:var(--proof);background:var(--paper-clear);border:1px solid var(--rule);font:10px/20px var(--mono);letter-spacing:.18em}
+  .evidence::after{content:"";position:absolute;top:-8px;right:30px;width:54px;height:17px;background:rgba(211,197,165,var(--tape-opacity));transform:rotate(2deg);mix-blend-mode:multiply}
+  .stage-section[data-clean-level="1"] .evidence{transform:rotate(-.35deg);box-shadow:5px 6px 0 rgba(71,58,39,.07)}
+  .stage-section[data-clean-level="2"] .evidence{transform:rotate(.25deg)}
+  .stage-section[data-clean-level="3"] .evidence{transform:rotate(-.16deg)}
+  .evidence-meta{margin-bottom:11px;color:var(--dim);font:10.5px/1.6 var(--mono);letter-spacing:.08em}
+  .speaker{margin:5px 0;padding-left:14px;text-align:left;font-size:15.5px;line-height:1.9;border-left:2px solid}
+  .speaker b{display:inline-block;min-width:3.2em;font-size:11px;letter-spacing:.12em}
+  .speaker.qian{color:var(--qian);border-color:var(--qian)}.speaker.lx{color:#7e5726;border-color:var(--lx)}
+  .evidence-note{margin-top:14px;padding-top:11px;border-top:1px dashed var(--rule);color:var(--soft);font-size:13.5px;line-height:1.8}
+  .role-strip{display:flex;flex-wrap:wrap;gap:9px;margin:30px 0 34px}
+  .role-strip span{padding:5px 12px 4px;color:var(--qian);background:#fffdf7;border:1px solid var(--rule);border-radius:50%;font-size:13px;transform:rotate(var(--r,0deg))}
+  .role-strip span:nth-child(2n){color:#7e5726}
+  .correction-card{margin:52px 0 42px;padding:42px 28px 34px;text-align:center;background:#fffdf7;border:1px solid var(--rule)}
+  .correction-label{color:var(--dim);font:10.5px var(--mono);letter-spacing:.24em}
+  .correction-toggle{display:inline-grid;place-items:center;min-width:230px;margin-top:54px;padding:18px 28px 10px;color:var(--ink);background:transparent;border:0;cursor:pointer;font:900 clamp(34px,6vw,52px)/1.2 var(--serif)}
+  .correction-toggle:focus-visible{outline:1px solid var(--proof);outline-offset:8px}
+  .correction-stack{position:relative;display:grid;place-items:center;min-width:180px}
+  .old-word{position:relative;color:var(--soft)}
+  .old-word::after{content:"";position:absolute;left:-8%;right:-8%;top:51%;height:4px;background:var(--proof);transform:scaleX(0) rotate(-5deg);transform-origin:left;transition:transform .55s ease}
+  .correction-arrow{position:absolute;right:-32px;top:-20px;color:var(--proof);font:25px var(--kai);opacity:0;transform:translate(-8px,8px) rotate(-28deg);transition:.42s .16s ease}
+  .new-word{position:absolute;left:50%;bottom:84%;color:var(--proof);font-family:var(--kai);font-size:.78em;font-weight:400;white-space:nowrap;opacity:0;transform:translate(-50%,12px) rotate(-3deg);transition:opacity .45s .2s ease,transform .55s .16s ease}
+  .correction-card.is-corrected .old-word::after,.correction-toggle:hover .old-word::after,.correction-toggle:focus-visible .old-word::after{transform:scaleX(1) rotate(-5deg)}
+  .correction-card.is-corrected .new-word,.correction-toggle:hover .new-word,.correction-toggle:focus-visible .new-word{opacity:1;transform:translate(-50%,0) rotate(-3deg)}
+  .correction-card.is-corrected .correction-arrow,.correction-toggle:hover .correction-arrow,.correction-toggle:focus-visible .correction-arrow{opacity:1;transform:translate(0,0) rotate(-28deg)}
+  .correction-hint{margin-top:12px;color:var(--dim);font:11px var(--mono)}
+  .outside{margin:92px -68px -92px;padding:112px 68px 88px;background:#fff;border-top:1px solid rgba(217,207,188,.55);box-shadow:0 0 0 100vmax #fff;clip-path:inset(0 -100vmax)}
+  .outside .stage-section{max-width:760px;margin:0 auto;padding-top:0;background:none;border-top:0}
+  .closing{margin:46px 0 0;padding:0 0 0 24px;border-left:3px solid var(--proof);font-size:20px;line-height:2.15}.closing strong{color:var(--qian)}
+  .pencil-stop{width:180px;height:5px;margin:64px 0 18px auto;background:linear-gradient(90deg,var(--proof) 0 78%,#d7b79d 78% 87%,#34302a 87%);transform:rotate(-4deg);transform-origin:right;box-shadow:0 2px 2px rgba(0,0,0,.08)}
+  .pencil-caption{text-align:right;color:var(--proof);font:14px var(--kai)}
+  .archive-note{margin-top:34px;padding:32px 66px 38px;color:#c9c1b2;background:#292720;font:12px/2 var(--mono);letter-spacing:.025em;border:1px solid #3d3930}
+  .archive-note b{color:#f2e5d0;font-weight:600}.archive-note .boundary{color:#99c0b5}
+  .back-top{position:fixed;right:24px;bottom:24px;z-index:15;width:44px;height:44px;color:var(--proof);background:rgba(245,240,228,.9);border:1px solid var(--proof);border-radius:50%;cursor:pointer;font:18px var(--mono);opacity:0;pointer-events:none;transform:translateY(10px);transition:.25s ease}
+  .back-top.show{opacity:1;pointer-events:auto;transform:none}
+  .js .reveal{opacity:0;transform:translateY(24px)}.js .reveal.is-visible{opacity:1;transform:none;transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+  @media (max-width:760px){
+    body{font-size:16.5px;line-height:2.02}.proof-book{width:min(100% - 24px,680px);margin-top:26px}.cover{min-height:auto;padding:46px 34px 42px}.cover::before{left:22px}
+    .title-grid{grid-template-columns:1fr;margin-top:60px}.stamp{position:absolute;right:32px;top:108px;width:92px;font-size:17px;opacity:.62}h1{font-size:clamp(50px,16vw,76px);padding-right:64px}.title-insert{margin-left:.75em}
+    .opening-marks{inset:66px 14px 24px 12px;font-size:12.5px;opacity:.54}.mark-cut-b{display:none}.mark-order{top:34%}.mark-move{left:2%;bottom:29%}.mark-query{right:2%;bottom:8%}
+    .deck{margin-top:50px;font-size:18px}.facts{grid-template-columns:1fr}.fact,.fact:first-child{padding:13px 0;border-right:0;border-bottom:1px solid var(--rule)}.fact:last-child{border-bottom:0}.fact b{font-size:22px}
+    .proof-map ol{grid-template-columns:1fr}.manuscript{padding:18px 26px 76px}.manuscript::before{left:21px}.stage-section{grid-template-columns:1fr;gap:8px;padding-top:74px}
+    .section-body{order:1}.margin-note{order:2;max-width:26em;margin-top:20px;padding:12px 0 4px 12px;border-left:2px solid var(--proof);transform:none}.margin-note::before{display:none}.margin-note b{display:inline;margin-right:8px}h2{font-size:29px}
+    .outside{margin:74px -26px -76px;padding:88px 26px 64px}.correction-toggle{min-width:200px;font-size:38px}.archive-note{padding:26px 24px 32px}
+  }
+  @media (max-width:430px){
+    .proof-book{width:100%;margin:0 auto 48px;filter:none}.paper{border-left:0;border-right:0}.crop{display:none}.cover{padding:38px 27px 34px}.folio{display:block}.folio span{display:block}
+    .stamp{right:23px;top:104px;width:78px;font-size:14px}h1{font-size:51px;padding-right:54px}.proof-map{padding:20px 18px}.manuscript{padding-left:24px;padding-right:24px}.outside{margin-left:-24px;margin-right:-24px}.mark-order{display:none}.mark-cut-a{right:4%}.mark-move{bottom:31%}.mark-query{bottom:7%}
+    .evidence{margin-left:-4px;margin-right:-4px;padding:21px 18px 17px}.speaker{font-size:14.5px}
+  }
+  @media print{html,body{background:#fff}body::before,.back-top,.crop{display:none}.proof-book{width:100%;margin:0;filter:none}.paper{border:0}.stage-section{break-inside:avoid}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#draft">跳到正文</a>
+<main class="proof-book" id="top">
+  <header class="paper cover" aria-labelledby="story-title">
+    <i class="crop tl"></i><i class="crop tr"></i><i class="crop br"></i><i class="crop bl"></i>
+    <div class="opening-marks" aria-hidden="true">
+      <span class="opening-mark mark-cut-a">删：热血宣言</span>
+      <span class="opening-mark mark-cut-b">删：英雄叙事</span>
+      <span class="opening-mark mark-order">① 先写代价</span>
+      <span class="opening-mark mark-move">↷ “弊多利少”移至开篇</span>
+      <span class="opening-mark mark-query">？留下不是口号</span>
+    </div>
+    <div class="folio"><span>LX ARCHIVE · 人物卷 · 校样编号 <b>QM-GXQ-01</b></span><span>2026-07-09 · 来稿</span></div>
+    <div class="title-grid">
+      <h1 id="story-title"><span class="title-main">清样</span><span class="title-insert">之前</span></h1>
+      <div class="stamp" aria-label="稿件状态：来稿">来<br>稿</div>
+    </div>
+    <p class="deck">她把一个<strong>“弊多利少”</strong>的部门，慢慢校成了一个舍不得离开的地方。<span class="deck-mark">批：所谓清样，不是纸上无错；是每一道错笔，都有人俯身改过。</span></p>
+    <div class="facts" aria-label="故事材料概览">
+      <div class="fact"><b>2025.06.30—2026.07.03</b><span>材料时间</span></div>
+      <div class="fact"><b>4,851</b><span>总消息</span></div>
+      <div class="fact"><b>160</b><span>有对话的日子</span></div>
+    </div>
+    <nav class="proof-map" aria-label="阅读目录">
+      <div class="proof-map-label">PROOF ROUTE · 八次校改</div>
+      <ol>
+        <li><a href="#draft"><span class="code">01 毛稿</span><span>弊多利少</span><span class="dots"></span></a></li>
+        <li><a href="#first-proof"><span class="code">02 初校</span><span>就剩咱俩</span><span class="dots"></span></a></li>
+        <li><a href="#red-pencil"><span class="code">03 红笔</span><span>地下工作</span><span class="dots"></span></a></li>
+        <li><a href="#revision"><span class="code">04 退修</span><span>错误变成培训</span><span class="dots"></span></a></li>
+        <li><a href="#columns"><span class="code">05 分栏</span><span>我讲美观</span><span class="dots"></span></a></li>
+        <li><a href="#margin"><span class="code">06 页边</span><span>魔音与难产儿</span><span class="dots"></span></a></li>
+        <li><a href="#final-proof"><span class="code">07 清样</span><span>传家宝</span><span class="dots"></span></a></li>
+        <li><a href="#outside-page"><span class="code">08 页外</span><span>舍不得，也停笔</span><span class="dots"></span></a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <article class="paper manuscript" aria-label="《清样之前》正文">
+    <section class="stage-section reveal" id="draft" data-stage="01" data-proof-state="来稿" data-clean-level="1">
+      <aside class="margin-note"><b>批注 01</b>清醒不是冷淡。先知道它累，后来的留下才有分量。</aside>
+      <div class="section-body">
+        <div class="section-status" aria-label="稿件状态：来稿，第一章"><span>来稿</span><em>01 / 08</em></div>
+        <h2>毛稿：弊多利少<small>2025-06-30 · 第一页</small></h2>
+        <p class="lede first-char">故事的第一页，不像一份热血的入部宣言。2025 年 6 月 30 日晚上，高小倩正在校外实习。刚当选文编部长的梁博星发来一串周全的问候，她先说自己过阵子的会可能去不了，拜托他听完后告知情况；接着问专业，做备注。礼貌之后，话题很快落到部门真正的重量上。</p>
+        <p>她本来想竞报社，报社却被合并了。她给自己的经历用了一个很轻的词：“被调剂了😂”。当梁博星问为什么报社和文编都没有人留下，她没有替组织写漂亮话，也没有把辛苦包装成荣耀。</p>
+        <div class="evidence" data-local-id="20">
+          <div class="evidence-meta">2025-06-30 21:09 · 私聊 localId 20</div>
+          <p class="speaker qian"><b>高小倩</b>报社垮了没人倒正常，文编平时活多，一般不竞选都不会留，弊多利少</p>
+          <div class="evidence-note">这不是一年后的总结，而是她进入故事第一晚就有的判断。</div>
+        </div>
+        <p>“弊多利少”四个字，像毛稿顶部的一条红批：别把这份工作想得太轻。她后来的每一次审稿、排班和培训，都应当从这里读起。她不是不知道代价才留下；她从一开始就知道。</p>
+      </div>
+    </section>
+
+    <section class="stage-section reveal" id="first-proof" data-stage="02" data-proof-state="初校" data-clean-level="2">
+      <aside class="margin-note"><b>批注 02</b>她不靠宣誓进入关系。先问截止，再把图片插上去。</aside>
+      <div class="section-body">
+        <div class="section-status" aria-label="稿件状态：初校，第二章"><span>初校</span><em>02 / 08</em></div>
+        <h2>初校：就剩咱俩<small>2025-07 至 2025-08 · 第一轮协作</small></h2>
+        <p>九天后，第一场高密度协作来了。下午四点，梁博星请她接一个推送。她没有先问“为什么是我”，而是问：“最迟多久给宋审核呢？”晚上七点三十六分，她答应八点半做出来；一分钟后又把时间提前到八点十分。图片、预览、后台刷新、临时链接，一项项从聊天里冒出来。</p>
+        <p>这是她惯用的工作语法：先把模糊的“尽快”改成具体时间，再看哪里会卡住。做不熟的地方她也直说，错处出现后再补。所谓可靠，在这里不是永不失误，而是让下一步始终可见。</p>
+        <div class="evidence" data-local-id="257">
+          <div class="evidence-meta">2025-08-22 16:14 · 私聊 localId 257—259</div>
+          <p class="speaker lx"><b>梁博星</b>文编就剩咱俩了[捂脸]</p>
+          <p class="speaker qian"><b>高小倩</b>好吧我以为还有付佳伊[捂脸]</p>
+          <div class="evidence-note">没有“共同扛完”的豪言。下一页仍是方案、旧稿和 deadline。</div>
+        </div>
+        <p>“就剩咱俩”是梁博星说的，不是她。高小倩的回答甚至有点扫兴：原来她以为还有第三个人。可正因为没有被写成宣誓，这一刻才更真——名单缩短之后，她没有替自己安排英雄台词，只是继续工作。</p>
+      </div>
+    </section>
+
+    <section class="stage-section reveal" id="red-pencil" data-stage="03" data-proof-state="初校" data-clean-level="3">
+      <aside class="margin-note"><b>批注 03</b>把活做完，只救得了今天；把活放到地上，别人才学得会。</aside>
+      <div class="section-body">
+        <div class="section-status" aria-label="稿件状态：初校，第三章"><span>初校</span><em>03 / 08 · 红笔</em></div>
+        <h2>红笔：地下工作必须被看见<small>2025-10-04 · 人物真正立起来的一页</small></h2>
+        <p>十月的一次任务里，梁博星说“找个编辑”，高小倩以为是在找她。听说要让部员们都试试，她顺势提出：把群里的人分成两组，每次轮流来；“你管你那边，我管我这边”，每次艾特他们做，也要留痕。</p>
+        <div class="evidence" data-local-id="927">
+          <div class="evidence-meta">2025-10-04 10:49 · 私聊 localId 927 及相邻会话</div>
+          <p class="speaker qian"><b>高小倩</b>你这些天搞地下工作，我都不知道他们做事了[捂脸]</p>
+          <p class="speaker qian"><b>高小倩</b>比如群里的人看见大家在轮流做，被分到任务心里会更有数一点，也知道咱们部咋运转的</p>
+          <div class="evidence-note">“地下工作”不是夸奖。看不见的高效，会让组织失去学习的机会。</div>
+        </div>
+        <p>这句话比“她很负责”更能说明她。她看见的问题不是部长累不累，而是劳动如果一直藏在私聊里，新人就只会看见成品，学不会部门如何运转。一个人把所有活悄悄做完，可能很快；但那不是可以交接的秩序。</p>
+        <p>当天，两组名单排了出来，任务从地下搬到地上。高小倩的红笔第一次越过稿件，画在流程上：这里要分组，这里要轮班，这里要留下别人能看见的痕迹。</p>
+      </div>
+    </section>
+
+    <section class="stage-section reveal" id="revision" data-stage="04" data-proof-state="退修" data-clean-level="4">
+      <aside class="margin-note"><b>批注 04</b>红笔若只会划别人，迟早会变成权力。她也给自己的语气留退修口。</aside>
+      <div class="section-body">
+        <div class="section-status" aria-label="稿件状态：退修，第四章"><span>退修</span><em>04 / 08</em></div>
+        <h2>退修：错误要变成下一次培训<small>2025-10 至 2025-11 · 红笔的两面</small></h2>
+        <p>一周后，她说了一句略重的话，没等对方追问，自己先补了一行。</p>
+        <div class="evidence" data-local-id="1057">
+          <div class="evidence-meta">2025-10-11 16:56 · 私聊 localId 1057</div>
+          <p class="speaker qian"><b>高小倩</b>语气有点冲，别介意[旺柴][抱拳]</p>
+          <div class="evidence-note">校对不只是指出错处，也包括在关系里主动撤回过重的一笔。</div>
+        </div>
+        <p>十一月，大型活动推送被指出“太花哨”，正式活动应当更简单。高小倩转来那段对话，没有把批评只递给出错的人。转发记录里，她已经回应：“好，我跟梁博星商量下再开一次培训，说些痛点。”</p>
+        <div class="evidence" data-local-id="2147">
+          <div class="evidence-meta">2025-11-03 · 私聊 localId 2147</div>
+          <p class="speaker qian"><b>高小倩</b>好，我跟梁博星商量下再开一次培训，说些痛点</p>
+          <div class="evidence-note">错误没有停在“谁做坏了”，而被改写成“下一次大家怎样做得更好”。</div>
+        </div>
+        <p>十多天后，第二次培训通知成形：“为加强同学们的编辑能力，提高效率，节省时间”，针对这段时间大家出现的问题展开。红笔在她手里不是判决书，更像返修意见：这一页可以不好，但不能白白不好。</p>
+      </div>
+    </section>
+
+    <section class="stage-section reveal" id="columns" data-stage="05" data-proof-state="复校" data-clean-level="5">
+      <aside class="margin-note"><b>批注 05</b>职位是正式的，称呼可以胡闹。对等不是没有分工，是分工可以说清。</aside>
+      <div class="section-body">
+        <div class="section-status" aria-label="稿件状态：复校，第五章"><span>复校</span><em>05 / 08 · 分栏</em></div>
+        <h2>分栏：您来主导，我讲美观<small>2025-11 至 2026-04 · 两个人的版式</small></h2>
+        <p>第二次培训前，两个人把内容拆开。高小倩先说“我们要不分下工”，梁博星把主位推给她；她接住之后，很快给出了明确版式。</p>
+        <div class="evidence" data-local-id="2474">
+          <div class="evidence-meta">2025-11-14 · 私聊 localId 2474、2479</div>
+          <p class="speaker lx"><b>梁博星</b>您来主导</p>
+          <p class="speaker qian" data-local-id="2479"><b>高小倩</b>那你讲编辑问题和转载 / 我讲美观</p>
+          <div class="evidence-note">不是谁替谁兜底，而是各自知道自己负责哪一栏。</div>
+        </div>
+        <p>严肃分工之外，称呼开始失去官场的庄重。梁部、梁总、高助理、高总、小梁、梁助理，头衔在聊天里来回翻面。它们并不证明谁高谁低，只说明两个人已经熟到可以把组织语言拿来当玩具。</p>
+        <div class="role-strip" aria-label="两人的角色扮演称呼"><span style="--r:-2deg">梁部</span><span style="--r:1deg">高助理</span><span style="--r:-1deg">梁总</span><span style="--r:2deg">高总</span><span style="--r:-2deg">小梁</span><span style="--r:1deg">梁助理</span></div>
+        <div class="evidence" data-local-id="2225">
+          <div class="evidence-meta">2025-11-03 17:14 · 私聊 localId 2224—2225</div>
+          <p class="speaker lx"><b>梁博星</b>有你真好</p>
+          <p class="speaker qian"><b>高小倩</b>太肉麻了哥们[惊恐]</p>
+          <div class="evidence-note">这一句把关系校得很准：可以信任，可以玩笑，但不必被叙述者擅自浪漫化。</div>
+        </div>
+        <p>到 2026 年 3 月，她刚听说聊天记录可以完整导出、分析，先笑自己“感觉很爱青媒工作了”，下一句又给出了她自己的解释。</p>
+        <div class="evidence" data-local-id="3719">
+          <div class="evidence-meta">2026-03-09 23:21—23:22 · 私聊 localId 3718—3719</div>
+          <p class="speaker qian"><b>高小倩</b>[捂脸]感觉很爱青媒工作了</p>
+          <p class="speaker qian"><b>高小倩</b>正常 咱俩工位邻居</p>
+          <div class="evidence-note">两句都由高小倩说。“工位邻居”照录原话；材料不足以证明实体桌位相邻，本文不再扩写。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stage-section reveal" id="margin" data-stage="06" data-proof-state="复校" data-clean-level="6">
+      <aside class="margin-note"><b>批注 06</b>人物不能只活在岗位说明里。页边的笑话、困意和拒绝，才让墨迹有温度。</aside>
+      <div class="section-body">
+        <div class="section-status" aria-label="稿件状态：复校，第六章"><span>复校</span><em>06 / 08 · 页边</em></div>
+        <h2>页边：魔音贯耳与难产儿<small>2026-01 至 2026-04 · 工作之外仍是具体的人</small></h2>
+        <p>元旦深夜，梁博星把新做的 AI 音乐发给她，自称“虚荣一下”，又问她要不要当甲方。高小倩拒绝得很有编辑感：“不了不了 / 这魔音贯耳 / 听不起。”评价完作品，她说“俺睡了”。工具、审美和作息，三件事在四句话里全部结清。</p>
+        <p>二月，他问一个 AI 社交产品玩不玩，她先回“不玩😄”，几分钟后却主动说开学可以出来吃饭：“一直当网友哈哈哈。”她对新技术并非一味追随，对关系也不靠抽象热络：不玩的就不玩，想见面的就把饭约出来。</p>
+        <p>真正把劳动喜剧推到顶点的是四月二十三日。一篇推送从下午做到晚上，她在九点四十八分宣布自己已经力竭。</p>
+        <div class="evidence" data-local-id="3988">
+          <div class="evidence-meta">2026-04-23 21:49—23:00 · 私聊 localId 3988、4001</div>
+          <p class="speaker qian"><b>高小倩</b>等我发出来吓死你 见识见识六个小时的难产儿</p>
+          <p class="speaker qian" data-local-id="4001"><b>高小倩</b>半条命丢那了</p>
+          <div class="evidence-note">她没有把疲惫说成勋章。它先是一场灾难，然后被她讲成笑话。</div>
+        </div>
+        <p>这就是她不适合被写成“默默奉献”的原因。她会做，会累，会抱怨，会说“我再也不去了”，也会在下一次任务里重新出现。真实的承担从来不庄严，它常常带着一句“哥们，我真的不行了”。</p>
+      </div>
+    </section>
+
+    <section class="stage-section reveal" id="final-proof" data-stage="07" data-proof-state="清样" data-clean-level="7">
+      <div class="section-body">
+        <div class="section-status" aria-label="稿件状态：清样，第七章"><span>清样</span><em>07 / 08</em></div>
+        <h2>清样：把遗产改成传家宝<small>2026-05 · 最重要的一次用词校正</small></h2>
+        <p>五月，梁博星提出做一场 AI 与青媒、编辑或融媒体相关的培训。高小倩没有假装自己懂：“我对AI不太了解，这次估计得你来了。”但下一句立刻是：“你需要我帮你干啥？”</p>
+        <p>几分钟后，她列出一条完整的准备链：先确定时间，问清培训内容有没有参考，勾框架，写稿子，找材料，做 PPT；又把两份旧文件拿出来。AI 内容由懂的人主导，组织工作却不能靠灵感漂着。她把一个想法压进时间表、材料和可交付的格式里。</p>
+        <p>五月二十七日，培训结束。梁博星说自己“逐帧学习”，她笑他怎么还需要学。谈到留下来的材料，她给出了两个词。</p>
+        <div class="evidence" data-local-id="4217">
+          <div class="evidence-meta">2026-05-27 19:30 · 私聊 localId 4217、4219</div>
+          <p class="speaker qian"><b>高小倩</b>留给后代</p>
+          <div data-local-id="4219"><p class="speaker qian"><b>高小倩</b>传家宝，我还写了好一会，感觉咋这么快就讲完了</p></div>
+          <div class="evidence-note">她把一场讲完就散的培训，命名成可以交给后来人的东西。</div>
+        </div>
+        <div class="correction-card" id="heritage-correction">
+          <div class="correction-label">2026-07-01 · 部长群 localId 8 / 20 · 用词校正</div>
+          <button class="correction-toggle" type="button" aria-expanded="false" aria-label="把遗产校正为传家宝">
+            <span class="correction-stack"><span class="new-word">传家宝</span><span class="old-word">遗产</span><span class="correction-arrow" aria-hidden="true">↖</span></span>
+          </button>
+          <div class="correction-hint">悬停或轻触“遗产”，重放这次校改</div>
+        </div>
+        <p>一个月后，梁博星在部长群里说“给大家送点遗产[旺柴]”。高小倩先顺着这个词开了两句“百年之后”的玩笑，随后认真退回来：“我说你用词不对，应该是传家宝。”这不是接班预言，只是一场准确的文字校正。</p>
+        <div class="proof-thought">“遗产”属于结束之后；“传家宝”属于人还在的时候，就愿意交到下一双手里。</div>
+      </div>
+    </section>
+
+    <div class="outside">
+      <section class="stage-section reveal" id="outside-page" data-stage="08" data-proof-state="归档" data-clean-level="8">
+        <div class="section-body">
+          <div class="section-status" aria-label="稿件状态：归档，第八章"><span>归档</span><em>08 / 08 · 页外</em></div>
+          <h2>页外：舍不得，也要停笔<small>2026-05 至 2026-07 · 最后一页之外</small></h2>
+          <p>五月二十八日，竞选和交接已经开始。听说越来越多人来问竞选的事，高小倩先说“不错 / 积极向上”。梁博星笑她有了惜才之心，她忽然把话从下一届拉回自己。</p>
+          <div class="evidence" data-local-id="4272">
+            <div class="evidence-meta">2026-05-28 22:46 · 私聊 localId 4272 起</div>
+            <p class="speaker qian"><b>高小倩</b>我还有点舍不得走</p>
+            <p class="speaker qian"><b>高小倩</b>待惯了 / 没青媒烦我 / 会不会空虚</p>
+            <div class="evidence-note">她最初说“弊多利少”，如今舍不得的，恰好是这份一直来烦她的工作。</div>
+          </div>
+          <p>这是全篇真正的变化。没有哪一次活动忽然感化了她；是 deadline、退修、轮班、玩笑和一次次“那我来”，把一个部门从名单上的职位磨成了日常。归属感不是宣言，是重复劳动在时间里留下的手感。</p>
+          <p>如果故事在这里结束，高小倩仍会被写成一个舍不得放手的组织角色。可她给档案留下的最后一道红线，恰好把人从岗位里救了出来。</p>
+          <div class="evidence" data-local-id="4840">
+            <div class="evidence-meta">2026-07-02 17:20 · 私聊 localId 4840 及后续</div>
+            <p class="speaker qian"><b>高小倩</b>这几天没要紧事先别联系我哈，得抓紧复习</p>
+            <p class="speaker qian"><b>高小倩</b>你也加油哇</p>
+            <div class="evidence-note">拒绝和关心并排出现。边界不是关系的反面，而是它能够长久的版心。</div>
+          </div>
+          <p class="closing">清样之前，她问时间、挑错、补材料、把地下工作搬到地上；清样之后，她把文件交出去，也把自己的时间收回来。<strong>她不是一支永远搁在编辑部桌上的红笔。</strong>她只是认真校完这一页，然后停笔。</p>
+          <div class="pencil-stop" aria-hidden="true"></div><div class="pencil-caption">笔止于页外，人仍向前。</div>
+        </div>
+      </section>
+    </div>
+  </article>
+  <footer class="archive-note">
+    <b>DATA · 私聊_高小倩_全部时间.json</b> · 4,851 条总消息，其中 3,739 条文本消息 · 2025-06-30 至 2026-07-03 · 160 个有对话的自然日<br>
+    关键引文已回原始 JSON 复核日期、说话人和 localId；错字、表情保留原样。群聊只用于核对“遗产 / 传家宝”的真实语境。<br>
+    <span class="boundary">叙述与批注为基于档案的有限推断；不展开联系方式、账号、临时链接和未核验媒体。存疑处以原始材料为准。</span><br>
+    LX ARCHIVE · 人物卷 ·《清样之前》· 2026-07-09
+  </footer>
+</main>
+<button class="back-top" type="button" aria-label="返回页首">↑</button>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.new-word{opacity:1!important;transform:none!important}.old-word::after{transform:scaleX(1) rotate(-5deg)!important}</style></noscript>
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealItems = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || reduceMotion) {
+    revealItems.forEach((item) => item.classList.add('is-visible'));
+  } else {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => { if (!entry.isIntersecting) return; entry.target.classList.add('is-visible'); observer.unobserve(entry.target); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -7% 0px' });
+    revealItems.forEach((item) => revealObserver.observe(item));
+  }
+  const correction = document.querySelector('.correction-card');
+  const correctionButton = document.querySelector('.correction-toggle');
+  const applyCorrection = () => { correction.classList.add('is-corrected'); correctionButton.setAttribute('aria-expanded', 'true'); };
+  correctionButton.addEventListener('pointerenter', applyCorrection);
+  correctionButton.addEventListener('focus', applyCorrection);
+  correctionButton.addEventListener('click', () => {
+    correction.classList.remove('is-corrected'); correctionButton.setAttribute('aria-expanded', 'false');
+    window.requestAnimationFrame(() => window.setTimeout(applyCorrection, reduceMotion ? 0 : 120));
+  });
+  const backTop = document.querySelector('.back-top');
+  const updateBackTop = () => backTop.classList.toggle('show', window.scrollY > 720);
+  window.addEventListener('scroll', updateBackTop, { passive: true }); updateBackTop();
+  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }));
+</script>
+</body>
+</html>
